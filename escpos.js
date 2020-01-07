@@ -48,7 +48,7 @@ export default class EscPos extends Component {
             </View>
             <View style={styles.btn}>
                 <Button onPress={async () => {
-                    await  BluetoothEscposPrinter.printQRCode("你是不是傻？", 280, BluetoothEscposPrinter.ERROR_CORRECTION.L);//.then(()=>{alert('done')},(err)=>{alert(err)});
+                    await  BluetoothEscposPrinter.printQRCode("Some error？", 280, BluetoothEscposPrinter.ERROR_CORRECTION.L);//.then(()=>{alert('done')},(err)=>{alert(err)});
                     await  BluetoothEscposPrinter.printText("\r\n\r\n\r\n", {});
                 }} title="Print QRCode"/>
             </View>
@@ -56,7 +56,7 @@ export default class EscPos extends Component {
             <View style={styles.btn}>
                 <Button onPress={async () => {
                     await BluetoothEscposPrinter.printerUnderLine(2);
-                    await  BluetoothEscposPrinter.printText("中国话\r\n", {
+                    await  BluetoothEscposPrinter.printText("English\r\n", {
                         encoding: 'GBK',
                         codepage: 0,
                         widthtimes: 0,
@@ -71,7 +71,7 @@ export default class EscPos extends Component {
             <View style={styles.btn}>
                 <Button onPress={async () => {
                     await BluetoothEscposPrinter.rotate(BluetoothEscposPrinter.ROTATION.ON);
-                    await  BluetoothEscposPrinter.printText("中国话中国话中国话中国话中国话\r\n", {
+                    await  BluetoothEscposPrinter.printText("Sample Text\r\n", {
                         encoding: 'GBK',
                         codepage: 0,
                         widthtimes: 0,
@@ -79,7 +79,7 @@ export default class EscPos extends Component {
                         fonttype: 1
                     });
                     await BluetoothEscposPrinter.rotate(BluetoothEscposPrinter.ROTATION.OFF);
-                    await  BluetoothEscposPrinter.printText("中国话中国话中国话中国话中国话\r\n", {
+                    await  BluetoothEscposPrinter.printText("Sample Text \r\n", {
                         encoding: 'GBK',
                         codepage: 0,
                         widthtimes: 0,
@@ -101,7 +101,7 @@ export default class EscPos extends Component {
                     await BluetoothEscposPrinter.printerLeftSpace(0);
                     await BluetoothEscposPrinter.printColumn([BluetoothEscposPrinter.width58 / 8 / 3, BluetoothEscposPrinter.width58 / 8 / 3 - 1, BluetoothEscposPrinter.width58 / 8 / 3 - 1],
                         [BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.CENTER],
-                        ["我就是一个测试看看很长会怎么样的啦", 'testing', '223344'], {fonttype: 1});
+                        ["Sample Testing", 'testing', '223344'], {fonttype: 1});
                     await  BluetoothEscposPrinter.printText("\r\n\r\n\r\n", {});
                 }} title="Print Column"/>
             </View>
@@ -114,7 +114,7 @@ export default class EscPos extends Component {
 
                         await BluetoothEscposPrinter.printerAlign(BluetoothEscposPrinter.ALIGN.CENTER);
                         await BluetoothEscposPrinter.setBlob(0);
-                        await  BluetoothEscposPrinter.printText("广州俊烨\r\n", {
+                        await  BluetoothEscposPrinter.printText("Print Text\r\n", {
                             encoding: 'GBK',
                             codepage: 0,
                             widthtimes: 3,
@@ -122,7 +122,7 @@ export default class EscPos extends Component {
                             fonttype: 1
                         });
                         await BluetoothEscposPrinter.setBlob(0);
-                        await  BluetoothEscposPrinter.printText("销售单\r\n", {
+                        await  BluetoothEscposPrinter.printText("Hello\r\n", {
                             encoding: 'GBK',
                             codepage: 0,
                             widthtimes: 0,
@@ -130,42 +130,42 @@ export default class EscPos extends Component {
                             fonttype: 1
                         });
                         await BluetoothEscposPrinter.printerAlign(BluetoothEscposPrinter.ALIGN.LEFT);
-                        await  BluetoothEscposPrinter.printText("客户：零售客户\r\n", {});
-                        await  BluetoothEscposPrinter.printText("单号：xsd201909210000001\r\n", {});
-                        await  BluetoothEscposPrinter.printText("日期：" + (dateFormat(new Date(), "yyyy-mm-dd h:MM:ss")) + "\r\n", {});
-                        await  BluetoothEscposPrinter.printText("销售员：18664896621\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Customer: Retail customer\r\n", {});
+                        await  BluetoothEscposPrinter.printText("S.No：xsd201909210000001\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Date：" + (dateFormat(new Date(), "yyyy-mm-dd h:MM:ss")) + "\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Seller：18664896621\r\n", {});
                         await  BluetoothEscposPrinter.printText("--------------------------------\r\n", {});
                         let columnWidths = [12, 6, 6, 8];
                         await BluetoothEscposPrinter.printColumn(columnWidths,
                             [BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.RIGHT],
-                            ["商品", '数量', '单价', '金额'], {});
+                            ["Item", 'quantity', 'unit price', 'amount'], {});
                         await BluetoothEscposPrinter.printColumn(columnWidths,
                             [BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.RIGHT],
-                            ["React-Native定制开发我是比较长的位置你稍微看看是不是这样?", '1', '32000', '32000'], {});
+                            ["React-Native custom development is relatively long for me", '1', '32000', '32000'], {});
                         await  BluetoothEscposPrinter.printText("\r\n", {});
                         await BluetoothEscposPrinter.printColumn(columnWidths,
                             [BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.CENTER, BluetoothEscposPrinter.ALIGN.RIGHT],
-                            ["React-Native定制开发我是比较长的位置你稍微看看是不是这样?", '1', '32000', '32000'], {});
+                            ["React-Native custom development is relatively long for me", '1', '32000', '32000'], {});
                         await  BluetoothEscposPrinter.printText("\r\n", {});
                         await  BluetoothEscposPrinter.printText("--------------------------------\r\n", {});
                         await BluetoothEscposPrinter.printColumn([12, 8, 12],
                             [BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.LEFT, BluetoothEscposPrinter.ALIGN.RIGHT],
-                            ["合计", '2', '64000'], {});
+                            ["Total", '2', '64000'], {});
                         await  BluetoothEscposPrinter.printText("\r\n", {});
-                        await  BluetoothEscposPrinter.printText("折扣率：100%\r\n", {});
-                        await  BluetoothEscposPrinter.printText("折扣后应收：64000.00\r\n", {});
-                        await  BluetoothEscposPrinter.printText("会员卡支付：0.00\r\n", {});
-                        await  BluetoothEscposPrinter.printText("积分抵扣：0.00\r\n", {});
-                        await  BluetoothEscposPrinter.printText("支付金额：64000.00\r\n", {});
-                        await  BluetoothEscposPrinter.printText("结算账户：现金账户\r\n", {});
-                        await  BluetoothEscposPrinter.printText("备注：无\r\n", {});
-                        await  BluetoothEscposPrinter.printText("快递单号：无\r\n", {});
-                        await  BluetoothEscposPrinter.printText("打印时间：" + (dateFormat(new Date(), "yyyy-mm-dd h:MM:ss")) + "\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Discount：100%\r\n", {});
+                        await  BluetoothEscposPrinter.printText("After Discount：64000.00\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Membership Card payment：0.00\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Points Dedcutions：0.00\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Amount：64000.00\r\n", {});
+                        await  BluetoothEscposPrinter.printText("S.Amount：Cash\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Note: none\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Courier number: None\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Date：" + (dateFormat(new Date(), "yyyy-mm-dd h:MM:ss")) + "\r\n", {});
                         await  BluetoothEscposPrinter.printText("--------------------------------\r\n", {});
-                        await  BluetoothEscposPrinter.printText("电话：\r\n", {});
-                        await  BluetoothEscposPrinter.printText("地址:\r\n\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Phone：\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Address:\r\n\r\n", {});
                         await BluetoothEscposPrinter.printerAlign(BluetoothEscposPrinter.ALIGN.CENTER);
-                        await  BluetoothEscposPrinter.printText("欢迎下次光临\r\n\r\n\r\n", {});
+                        await  BluetoothEscposPrinter.printText("Welcome Next time\r\n\r\n\r\n", {});
                         await BluetoothEscposPrinter.printerAlign(BluetoothEscposPrinter.ALIGN.LEFT);
                         await  BluetoothEscposPrinter.printText("\r\n\r\n\r\n", {});
                     } catch (e) {
